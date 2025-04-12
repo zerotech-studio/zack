@@ -3,7 +3,7 @@
 ├── build.zig             # Zig build system script
 ├── build.zig.zon         # Build dependencies
 ├── config/               # Configuration files (e.g., backtest settings, strategy params)
-│   └── backtest_config.json # Example: General settings
+│   └── config.json # Example: General settings
 │   └── buy_and_hold.json    # Example: Strategy-specific params
 ├── data/                 # Directory to store your market data files
 │   └── sample_ohlcv.csv  # Example: Price data (OHLCV)
@@ -16,14 +16,12 @@
     │   └── engine.zig      # The main event loop/orchestrator logic
     │
     ├── indicators/         # Reusable technical indicators
-    │   ├── interface.zig   # (Optional but recommended) Defines common indicator interface/traits
     │   ├── sma.zig         # Simple Moving Average implementation
     │   └── ema.zig         # Exponential Moving Average implementation
     │   └── bollinger.zig   # Example: Bollinger Bands
     │   # ... other indicators
     │
     ├── strategies/         # Trading strategy implementations
-    │   ├── interface.zig   # Defines the interface all strategies must adhere to
     │   │
     │   ├── buy_and_hold/   # Specific strategy directory
     │   │   └── strategy.zig # Implements the strategy interface for Buy and Hold
