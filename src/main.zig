@@ -14,5 +14,5 @@ pub fn main() !void {
 
     const budget = config.budget;
 
-    std.debug.print("budget: {d}\nstring: {s}", .{ budget, config.testy });
+    std.debug.print("budget: {d}\nstrategy: {s}\ndata: {s}\n", .{ budget, config.strategy, config.data });
 }

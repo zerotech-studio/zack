@@ -1,4 +1,5 @@
 {
   "budget": 10000,
-  "testy": "test string"
+  "strategy": "buy-and-hold.json",
+  "data": "btc.csv"
 }
