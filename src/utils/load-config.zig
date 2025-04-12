@@ -13,3 +13,11 @@ pub fn loadConfig(alloc: Allocator) !std.json.Parsed(Config) {
 
     return std.json.parseFromSlice(Config, alloc, data, .{ .allocate = .alloc_always });
 }
+
+test "loadConfig" {
+    const config = try loadConfig(std.testing.allocator);
+    defer config.deinit();
+
+    try std.testing.expectEqual(@as(u64, 10000), config.value.budget);
+    try std.testing.expectEqualSlices(u8, "test string", config.value.testy);
+}
