@@ -12,7 +12,7 @@ const Strat = @import("load-config.zig").Strat;
 const LogLevel = enum { Info, Warn, Error, Debug };
 
 // Simple log function with timestamp and level (optional)
-fn log(level: LogLevel, comptime format: []const u8, args: anytype) void {
+pub fn log(level: LogLevel, comptime format: []const u8, args: anytype) void {
     // In the future, we could add timestamps, write to files, etc.
     const level_str = switch (level) {
         .Info => "INFO",
