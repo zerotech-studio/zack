@@ -1,4 +1,4 @@
-# 📈 ZigZagTrader: A Simple Backtesting Engine in Zig 📉
+# 📈 Zack: A Simple Backtesting Engine in Zig 📉
 
 Welcome to ZigZagTrader! This project is a lightweight yet powerful backtesting engine for trading strategies, written entirely in Zig ⚡. It allows you to test your trading ideas against historical market data to see how they might have performed.
 
