@@ -13,7 +13,6 @@ Zig offers several advantages for this kind of application:
 *   **Performance:** Zig compiles to fast, efficient machine code, crucial for processing potentially large datasets quickly.
 *   **Memory Control:** Manual memory management allows for fine-tuned optimization and avoids hidden overhead.
 *   **Simplicity:** Zig's focus on simplicity and explicitness makes the codebase easier to understand and maintain (no hidden control flow!).
-*   **Safety:** While offering low-level control, Zig includes features to help catch bugs at compile time.
 
 ## ⚙️ How it Works: The Engine Flow
 
