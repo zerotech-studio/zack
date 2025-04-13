@@ -2,45 +2,29 @@ const std = @import("std");
 const print = std.debug.print;
 const Allocator = std.mem.Allocator;
 
-const loadConfig = @import("utils/load-config.zig").loadConfig;
-const loadStrat = @import("utils/load-config.zig").loadStrategySettings;
-const loadOhlcvData = @import("utils/load-config.zig").loadOhlcvData;
-const csv = @import("utils/csv/csv-parser.zig");
+const AppContext = @import("utils/load-config.zig").AppContext;
 
 pub fn main() !void {
     var gpa = std.heap.GeneralPurposeAllocator(.{}){};
     const allocator = gpa.allocator();
-    // defer {
-    //     const leaked = gpa.deinit();
-    //     if (leaked) {
-    //         print("Memory leak detected!\n", .{});
-    //     }
-    // }
+    // Initialize the application context, loading all data
+    var context = try AppContext.init(allocator);
+    // Ensure all resources within the context are freed upon exiting main
+    defer context.deinit();
 
-    const parsedConfig = try loadConfig(allocator);
-    defer parsedConfig.deinit();
+    // Access configuration values through the context
+    const budget = context.config.value.budget;
+    const strategy_name = context.config.value.strategy;
+    const data_file_name = context.config.value.data;
 
-    const config = parsedConfig.value;
+    // Access strategy settings through the context
+    const buyAt = context.strategy.value.buyAt;
 
-    const budget = config.budget;
-    const strategy = config.strategy;
-    const data = config.data;
+    // Access OHLCV data table through the context
+    const table = context.ohlcvData;
 
-    const strategyFilePath = try std.fmt.allocPrint(allocator, "config/{s}", .{strategy});
-    defer allocator.free(strategyFilePath);
-
-    const parsedStrategy = try loadStrat(allocator, strategyFilePath);
-    defer parsedStrategy.deinit();
-
-    const strat = parsedStrategy.value;
-
-    const buyAt = strat.buyAt;
-
-    var table = try loadOhlcvData(allocator, data);
-    defer table.deinit();
-
-    print("budget: {d}\nstrategy: {s}\ndata: {s}\n", .{ budget, strategy, data });
-    print("Strategy settings: {d}\n", .{buyAt});
+    print("budget: {d}\nstrategy: {s}\ndata: {s}\n", .{ budget, strategy_name, data_file_name });
+    print("Strategy settings: {s} {d}\n", .{ strategy_name, buyAt });
     print("OHLCV data (first 10 rows):\n", .{});
     var i: usize = 0;
     for (table.body.items) |row_str| {
