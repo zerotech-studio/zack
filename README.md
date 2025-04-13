@@ -1,10 +1,10 @@
 # 📈 Zack: A Simple Backtesting Engine in Zig 📉
 
-Welcome to ZigZagTrader! This project is a lightweight yet powerful backtesting engine for trading strategies, written entirely in Zig ⚡. It allows you to test your trading ideas against historical market data to see how they might have performed.
+Welcome to Zack! This project is a lightweight yet powerful backtesting engine for trading strategies, written entirely in Zig ⚡. It allows you to test your trading ideas against historical market data to see how they might have performed.
 
 ## 🤔 What is it?
 
-ZigZagTrader simulates the process of trading based on a predefined strategy using historical OHLCV (Open, High, Low, Close, Volume) data. It processes data bar-by-bar, generates trading signals, simulates order execution, manages a virtual portfolio, and reports the performance.
+Zack simulates the process of trading based on a predefined strategy using historical OHLCV (Open, High, Low, Close, Volume) data. It processes data bar-by-bar, generates trading signals, simulates order execution, manages a virtual portfolio, and reports the performance.
 
 ## ✨ Why Zig?
 
