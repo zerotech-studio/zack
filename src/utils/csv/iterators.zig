@@ -1,5 +1,3 @@
-//! This module provides structs for parsing and manipulating CSV data
-//! [Released under GNU LGPLv3]
 const std = @import("std");
 const TableError = @import("csv-parser.zig").TableError;
 

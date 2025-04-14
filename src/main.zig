@@ -17,14 +17,6 @@ pub fn main() !void {
     // --- Log Initial Config --- (Keep this part)
     logger.logConfig(context.config.value);
     logger.logStrategy(context.strategy.value);
-    // logger.logOhlcvHeader(); // Engine/Results will handle data logging if needed
-    // // Log the first 10 rows using the pretty logger
-    // var i: usize = 0;
-    // for (context.ohlcvData.body.items) |row_str| {
-    //     if (i >= 10) break; // Stop after logging 10 rows
-    //     logger.logOhlcvRowPretty(row_str, allocator);
-    //     i += 1;
-    // }
 
     // --- Initialize and Run Backtest Engine ---
     var engine = try BacktestEngine.init(allocator, &context);
@@ -33,5 +25,5 @@ pub fn main() !void {
 
     try engine.run();
 
-    print("\nApplication finished successfully.\n", .{});
+    print("\nBacktest finished successfully.\n", .{});
 }
